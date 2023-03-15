@@ -20,13 +20,7 @@ const Hero = () => {
           </div>
 
           <div className="absolute bottom-0 right-0 ">
-            <Image
-              src={Banner}
-              alt="Hero Image"
-              width={500}
-              objectFit="cover"
-              quality={100}
-            />
+            <Image src={Banner} alt="Hero Image" width={500} quality={100} />
           </div>
         </div>
       </div>

@@ -264,6 +264,7 @@ export default function TelegramForm() {
 
                 <div className="text-center">
                   <button
+                    onClick={handleSubmit}
                     type="submit"
                     className="w-full md:w-3/6 bg-green-600 rounded-md p-2 mt-2"
                   >
