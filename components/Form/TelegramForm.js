@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Modal from '../../components/Modal/Modal';
 
 export default function TelegramForm() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -15,6 +16,22 @@ export default function TelegramForm() {
   const [year, setYear] = useState('');
   const [cvv, setCVV] = useState('');
 
+  {
+    /* Esto es del modal de transaccion */
+  }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  {
+    /* Esto es del formulario */
+  }
   const handleNext = () => {
     setCurrentStep(currentStep + 1);
   };
@@ -264,12 +281,13 @@ export default function TelegramForm() {
 
                 <div className="text-center">
                   <button
-                    onClick={handleSubmit}
+                    onClick={handleOpenModal}
                     type="submit"
                     className="w-full md:w-3/6 bg-green-600 rounded-md p-2 mt-2"
                   >
                     Pagar
                   </button>
+                  <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
                 </div>
               </div>
             </div>
